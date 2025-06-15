@@ -1,0 +1,32 @@
+[project]
+name = "semantic-scholar-mcp"
+version = "0.1.0"
+description = "Semantic Scholar MCP Server"
+authors = [{ name = "FUJISHIGE TEMMA", email = "tenma.x0@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "anyio>=4.9.0",
+    "click>=8.2.1",
+    "mcp[cli]>=1.9.4",
+    "requests>=2.31.0",
+    "starlette>=0.47.0",
+    "uvicorn>=0.34.3",
+]
+
+[project.scripts]
+semantic-scholar-mcp = "semantic_scholar_mcp.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "anyio>=4.9.0",
+    "pytest-asyncio>=1.0.0",
+    "pytest>=8.4.0",
+    "ruff>=0.11.13",
+    "ty>=0.0.1a10",
+    "httpx>=0.28.1",
+]
