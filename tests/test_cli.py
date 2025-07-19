@@ -66,7 +66,7 @@ class TestCLI:
         with patch("semantic_scholar_mcp.cli.anyio.run"):
             result = self.runner.invoke(cli, ["serve", "--api-key", "test-key"])
             assert result.exit_code == 0
-            assert "✓ Semantic Scholar API key configured" in result.output
+            assert "[OK] Semantic Scholar API key configured" in result.output
             mock_server_class.assert_called_with(api_key="test-key")
 
     def test_serve_without_api_key(self):
@@ -77,7 +77,7 @@ class TestCLI:
         ):
             result = self.runner.invoke(cli, ["serve"])
             assert result.exit_code == 0
-            assert "⚠️  No Semantic Scholar API key found" in result.output
+            assert "[WARNING] No Semantic Scholar API key found" in result.output
 
     def test_tools_command_help(self):
         """Test tools command help."""

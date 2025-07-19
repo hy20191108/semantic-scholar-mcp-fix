@@ -63,10 +63,10 @@ def serve(
         click.echo("Debug mode enabled")
 
     if api_key:
-        click.echo("✓ Semantic Scholar API key configured")
+        click.echo("[OK] Semantic Scholar API key configured")
     else:
         click.echo(
-            "⚠️  No Semantic Scholar API key found (set SEMANTIC_SCHOLAR_API_KEY environment variable for higher rate limits)"
+            "[WARNING] No Semantic Scholar API key found (set SEMANTIC_SCHOLAR_API_KEY environment variable for higher rate limits)"
         )
 
     server_instance = SemanticScholarServer(api_key=api_key)
@@ -319,13 +319,13 @@ def list_tools(output_format: str, verbose: bool) -> None:
         click.echo()
 
         for tool in tools_data:
-            click.echo(f"🔧 {tool['name']}")
+            click.echo(f"[TOOL] {tool['name']}")
             click.echo(f"   {tool['description']}")
             click.echo()
 
             if verbose:
                 # Input Schema
-                click.echo("   📥 Input Schema:")
+                click.echo("   Input Schema:")
                 props = tool["input_schema"].get("properties", {})
                 required = tool["input_schema"].get("required", [])
 
@@ -350,7 +350,7 @@ def list_tools(output_format: str, verbose: bool) -> None:
 
                 # Examples
                 if "examples" in tool:
-                    click.echo("   💡 Usage Examples:")
+                    click.echo("   Usage Examples:")
                     for i, example in enumerate(tool["examples"], 1):
                         click.echo(f"     {i}. {example['description']}")
                         click.echo(f"        Input: {example['input']}")
